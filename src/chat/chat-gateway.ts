@@ -30,6 +30,6 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @SubscribeMessage('newMessage')
   handleMessage(client: Socket, message: any) {
-    this.server.emit('chat', { message: `${client.id}: ${message}` });
+    this.server.emit('chat', { client_id: client.id, message: `${client.id}: ${message}` });
   }
 }
